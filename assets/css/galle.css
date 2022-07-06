@@ -1,0 +1,91 @@
+/* The grid: Four equal columns that floats next to each other */
+.gall-column {
+    float: left;
+    flex-basis: calc(20% - 10px);
+    height: 100%;
+    margin: 5px;
+}
+
+/* Style the images inside the grid */
+.gall-column img {
+    opacity: 0.8; 
+    cursor: pointer;
+    width: 100%; 
+    height: 145px;
+    object-fit: cover;
+}
+
+.gall-column img:hover {
+    opacity: 1;
+}
+
+/* Clear floats after the columns */
+.gall-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.gall-row{
+    display: flex;
+    justify-content: space-between;
+}
+/* The expanding image container */
+.gall-container {
+    position: relative;
+}
+
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.gall-container img.frame_img{
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+}
+
+
+@media(max-width: 768px){
+    .gall-container img.frame_img{
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+    }
+    .gall-column img {
+        opacity: 0.8; 
+        cursor: pointer;
+        width: 100%; 
+        height: 100px;
+        object-fit: cover;
+    }
+}
+
+@media(max-width: 420px){
+    .gall-container img.frame_img{
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+    .gall-column img {
+        opacity: 0.8; 
+        cursor: pointer;
+        width: 100%; 
+        height: 60px;
+        object-fit: cover;
+    }
+}
