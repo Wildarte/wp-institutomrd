@@ -222,3 +222,50 @@ document.getElementById('sendForm2').addEventListener('click', function(e){
     });
 })
 
+
+
+//======================== gallery =======================================
+const our_gallery = document.querySelector('.our_gallery');//galeria de imagens
+const imgs_gallery = document.querySelectorAll('.card_gallery img');//imagens da galeria
+const our_gallery_modal = document.querySelector('.our_gallery_modal');
+const close_modal_gallery = document.getElementById('close_modal_gallery');
+const top_gallery = document.querySelector('.top_gallery');
+
+
+imgs_gallery.forEach((item, index) => {
+
+    item.addEventListener('click', () => {
+
+        imgs_gallery.forEach((item) => {
+            item.style.opacity = "0";
+            item.style.display = "none";    
+
+        });
+
+        our_gallery.classList.add('our_gallery_modal');
+        imgs_gallery[index].style.opacity = "1";
+        imgs_gallery[index].style.display = "block";
+
+
+        top_gallery.style.display = "block";
+
+    });
+
+});
+
+close_modal_gallery.addEventListener('click', function(){
+
+    our_gallery.classList.remove('our_gallery_modal');
+
+    imgs_gallery.forEach((item) => {
+        item.style.opacity = "1";
+        item.style.display = "block";    
+
+    });
+
+    top_gallery.style.display = "none";
+
+});
+
+console.log(imgs_gallery.length);
+//======================== gallery =======================================

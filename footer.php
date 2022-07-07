@@ -63,10 +63,11 @@
     </footer>
 
 
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/script.js"></script>
+
+    <!-- wp footer -->
+    <?php wp_footer() ?>
+    <!-- wp footer -->
     <script>
         $(document).ready(function(){
             $(".owl-carousel").owlCarousel({

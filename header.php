@@ -9,19 +9,15 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html <?php language_attributes() ?>>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?php bloginfo('charset') ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/galle.css">
-    <link rel="stylesheet" href="assets/css/post.css">
-    <title>Instituto MRD</title>
+    <title><?php bloginfo('name') ?></title>
+    <!-- wp head -->
+    <?php wp_head(); ?>
+    <!-- wp head -->
 </head>
 <body>
     
@@ -33,7 +29,7 @@
             <div class="bottom_header_content container">
                 <div class="header_logo">
                     <a href="<?= $request ?>">
-                        <img src="assets/img/Brand.png" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/Brand.png" alt="">
                     </a>
                 </div>
                 <div class="btn_menu">
@@ -42,7 +38,7 @@
                 <nav class="menu">
                     <div class="header_logo_mobile">
                         <a href="<?= $request ?>">
-                            <img src="assets/img/Brand.png" alt="">
+                            <img src="<?= get_template_directory_uri() ?>/assets/img/Brand.png" alt="">
                         </a>
                         <i class="bi bi-x-lg" id="close_menu"></i>
                     </div>
