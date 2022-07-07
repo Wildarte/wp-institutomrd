@@ -28,7 +28,7 @@
         <div class="bottom_header container_full">
             <div class="bottom_header_content container">
                 <div class="header_logo">
-                    <a href="<?= $request ?>">
+                    <a href="<?= home_url() ?>">
                         <img src="<?= get_template_directory_uri() ?>/assets/img/Brand.png" alt="">
                     </a>
                 </div>
@@ -37,25 +37,14 @@
                 </div>
                 <nav class="menu">
                     <div class="header_logo_mobile">
-                        <a href="<?= $request ?>">
+                        <a href="<?= home_url() ?>">
                             <img src="<?= get_template_directory_uri() ?>/assets/img/Brand.png" alt="">
                         </a>
                         <i class="bi bi-x-lg" id="close_menu"></i>
                     </div>
-                    <ul class="menu_list">
-                        <li class="animate__animated animate__fadeInDown">
-                            <a href="<?= $url ?>#quemsomos">Quem Somos</a>
-                        </li>
-                        <li class="animate__animated animate__fadeInDown">
-                            <a href="<?= $url ?>#projetos">Projetos</a>
-                        </li>
-                        <li class="animate__animated animate__fadeInDown">
-                            <a href="<?= $url ?>#acontece">Acontece</a>
-                        </li>
-                        <li class="animate__animated animate__fadeInDown">
-                            <a href="<?= $url ?>#voluntario">Seja voluntário</a>
-                        </li>
-                    </ul>
+
+                    <?php wp_nav_menu(['theme_location' => 'menu-principal']); ?>
+                    
                 </nav>
             </div>
         </div>

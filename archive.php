@@ -1,20 +1,14 @@
-<?php
-// Template Name: Blog
-get_header();
-?>
 
+<?php get_header() ?>
 
     <main>
-
         <section class="header_bg container_full">
             <h3 class="subtitle-default color-green">O que há de novo</h3>
-            <h2 class="title-default">Blog / Notícias / Eventos</h2>
+            <h2 class="title-default"><?= the_archive_title() ?></h2>
         </section>
 
-        <section class="conteudo container">
+        <section class="conteudo container" style="padding: 40px 10px 80px;">
             <header class="header_conteudo">
-                <h3 class="desc-default">Categorias</h3>
-
                 <section class="cards_categorias d-flex">
 
                     <a href="<?= home_url() ?>/blog" class="card_cat bg-gray d-flex">
@@ -22,19 +16,16 @@ get_header();
                         <p>Todos</p>
                     </a>
 
-                <?php 
-                
-                    $terms = get_terms([
-                        'taxonomy' => 'category',
-                        'hide_empty' => false,
-                        'orderby' => 'term_id'
-                    ]);
+                <?php
+
+                    if(is_category()):
+
+                    $cat = get_the_category()[0];
+                    
 
                     $class_color = "";
 
-                    foreach($terms as $term):
-
-                        switch($term->slug):
+                        switch($cat->slug):
                             case "blog":
                                 $class_color = "bg-yellow";
                             break;
@@ -50,15 +41,13 @@ get_header();
                     
                 ?>
 
-                    <a href="<?= get_category_link($term->term_id); ?>" class="card_cat <?= $class_color ?> d-flex">
+                    <a href="#" class="card_cat <?= $class_color ?> d-flex">
                         <img src="<?= get_template_directory_uri() ?>/assets/img/vector.png" alt="">
-                        <p><?= $term->name; ?></p>
+                        <p><?= $cat->name; ?></p>
                     </a>
+                    
+                <?php endif; ?>
 
-                    <?php endforeach; ?>
-
-
-                    </a>
                 </section>
                 
             </header>
@@ -116,15 +105,13 @@ get_header();
             </section>
 
             <div class="btn_more_post">
-
+                
                 <?= previous_posts_link( '<span class="btn-gray" href="">Voltar</span>' ) ?>
                 <?= next_posts_link( '<span class="btn-gray" href="">Ver mais</span>' ) ?>
-                
+
             </div>
             
 
         </section>
-
     </main>
-
 <?php get_footer() ?>

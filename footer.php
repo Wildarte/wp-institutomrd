@@ -6,26 +6,8 @@
 
             <div class="menu_footer">
                 <h3>Menus</h3>
-                <ul>
-                    <li>
-                        <a href="<?= $url ?>#quemsomos">Quem Somos</a>
-                    </li>
-                    <li>
-                        <a href="<?= $url ?>#projetos">Projetos</a>
-                    </li>
-                    <li>
-                        <a href="<?= $url ?>#acontece">Acontece</a>
-                    </li>
-                    <li>
-                        <a href="<?= $url ?>#voluntario">Seja volutário</a>
-                    </li>
-                    <li>
-                        <a href="#">Transparência</a>
-                    </li>
-                    <li>
-                        <a href="#">Política de Privacidade</a>
-                    </li>
-                </ul>
+                    <?php wp_nav_menu(['theme_location' => 'menu-footer']); ?>
+
             </div>
 
             <div class="contato_footer">
@@ -37,24 +19,24 @@
                         <p><i class="bi bi-geo-alt"></i> Sebastião Maria da Silva, 166 - Átila de Paiva</p>
                     </li>
                     <li>
-                        <a href="tel:+5531999511778"><i class="bi bi-telephone"></i> (31) 9 9951-1778</a>
+                        <a href="tel:+55<?= get_option('show_telefone_contato') ?>"><i class="bi bi-telephone"></i> <?= get_option('show_telefone_contato') ?></a>
                     </li>
                     <li>
-                        <a href="mailto:faleconosco@marcosrdias.com.br"><i class="bi bi-envelope"></i> faleconosco@marcosrdias.com.br</a>
+                        <a href="mailto:<?= get_option('show_email_contato') ?>"><i class="bi bi-envelope"></i> <?= get_option('show_email_contato') ?></a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="footer_bottom">
             <div class="footer_bottom_content container">
-                <p>© 2022 Insituto MRD Designed by MRD</p>
+                <p>© <?= date("Y") ?> Insituto MRD Designed by MRD</p>
 
                 <ul class="social_footer">
                     <li>
-                        <a href="https://www.facebook.com/institutomrd" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="<?= get_option('show_facebook') ?>" target="_blank"><i class="bi bi-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/institutomrd" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="<?= get_option('show_instagram') ?>" target="_blank"><i class="bi bi-instagram"></i></a>
                     </li>
                 </ul>
             </div>

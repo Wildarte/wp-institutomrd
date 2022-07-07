@@ -83,6 +83,12 @@ function cmb2_home_page(){
         'closed' => true
         
     ]);
+    $cmb2_quem_somos->add_field( array(
+        'name' => 'Link da seção quem somos',
+        'desc' => '',
+        'id' => 'link_quem_somos',
+        'type' => 'text_url',
+    ) );
     $cmb2_quem_somos->add_field([
         'name'    => 'Imagem da seção "Quem Somos"',
         'desc'    => 'Essa imagem é exibida na seção Quem Somos',

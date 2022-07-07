@@ -65,7 +65,7 @@ get_header();
                         </article>
                     </section>
                     <div class="bottom_hist">
-                        <a class="link_hist" href="<?= $request ?>/quem-somos.php">Saiba mais ></a>
+                        <a class="link_hist" href="<?= get_post_meta( get_the_ID(), 'link_quem_somos', true ) ?>">Saiba mais ></a>
                     </div>
                 </div>
 
@@ -145,69 +145,67 @@ get_header();
             </header>
 
             <section class="posts container d-flex">
+
+                <?php
+
+                    $args_post = [
+                        'post_type' => 'post',
+                        'post_per_page' => 3
+                    ];
+
+                    $result_posts = new WP_Query($args_post);
+
+                    if($result_posts->have_posts()):
+
+                        while($result_posts->have_posts()):
+                            $result_posts->the_post();
+
+                ?>
+
                 <article class="card_post">
-                    <a href="<?= $request ?>/page-interna.php">
-                        <img src="<?= get_template_directory_uri() ?>/assets/img/post1.jpeg" alt="">
+                    <a href="<?= get_the_permalink() ?>">
+                        <img src="<?= get_the_post_thumbnail_url(null, 'medium') ?>" alt="">
 
                         <div class="post_info">
 
-                            <h3>Contando histórias e transformando vidas</h3>
-                            <p>Instituto MRD abre suas portas para receber crianças, adolescentes e jovens, oferecendo oportunidades de crescimento pessoal e profissional…</p>
+                            <h3><?= get_the_title() ?></h3>
+                            <p><?= get_the_excerpt() ?>…</p>
                             
                             <p style="color: #333; margin-top: 10px;">Saiba mais</p>
 
                         </div>
                 
-                        <p class="post_bottom"> <time>17 junho</time> <!--  <span>03</span> comentários --> </p>
+                        <p class="post_bottom"> <time><?= get_the_date("j F") ?></time> <!--  <span>03</span> comentários --> </p>
 
-                        <span class="post_cat bg-purple">Notícias</span>
+                        <?php
+
+                            switch(get_the_category()[0]->slug):
+                                case "blog":
+                                    $class_color = "bg-yellow";
+                                break;
+                                case "noticias":
+                                    $class_color = "bg-purple";
+                                break;
+                                case "eventos":
+                                    $class_color = "bg-blue";
+                                break;
+                                default:
+                                    $class_color = "";
+                            endswitch;
+
+                        ?>
+
+                        <span class="post_cat <?= $class_color ?>"><?= get_the_category()[0]->name; ?></span>
                     </a>
                 </article>
 
-                <article class="card_post">
-                    <a href="<?= $request ?>/page-interna2.php">
-                        <img src="<?= get_template_directory_uri() ?>/assets/img/post2.jpeg" alt="">
-
-                        <div class="post_info">
-
-                            <h3>Aulas de reforço para uma educação mais completa</h3>
-                            <p>No Instituto MRD, as aulas de reforço para crianças acontecem a partir da alfabetização e vão até o terceiro ano do Ensino Médio...</p>
-                            
-                            <p style="color: #333; margin-top: 10px;">Saiba mais</p>
-
-                        </div>
-                
-                        <p class="post_bottom"> <time>20 junho</time><!--  <span>03</span> comentários --> </p>
-
-                        <span class="post_cat bg-yellow">Blog</span>
-                    </a>
-                </article>
-
-                <article class="card_post">
-                    <a href="<?= $request ?>/page-interna3.php">
-                        <img src="<?= get_template_directory_uri() ?>/assets/img/post3.jpeg" alt="">
-
-                        <div class="post_info">
-
-                            <h3>Quando o sentimento de querer o bem do próximo se transforma em ação</h3>
-                            <p>Antes de mais nada, você sabe mesmo o que significa ser voluntário?...</p>
-                            
-                            <p style="color: #333; margin-top: 10px;">Saiba mais</p>
-
-                        </div>
-                
-                        <p class="post_bottom"> <time>22 junho</time><!--  <span>03</span> comentários --> </p>
-
-                        <span class="post_cat bg-yellow">Blog</span>
-                    </a>
-                </article>
-
+                <?php endwhile; endif; ?>
                 
                 
             </section>
 
             <div class="btn_more_post">
-                <a class=" btn-gray" href="<?= $request ?>/page-blog.php">Ver mais</a>
+                <a class=" btn-gray" href="<?= home_url() ?>/blog">Ver mais</a>
             </div>
             
 
@@ -517,7 +515,17 @@ get_header();
                         <img src="<?= get_template_directory_uri() ?>/assets/img/bloco6.jpeg" alt="">
                     </div>
                      -->
+
+                     <div class="btn_prev_gall" onclick="prevImg()">
+                        <i class="bi bi-caret-left-fill"></i>
+                    </div>
+
+                    <div class="btn_next_gall" onclick="nextImg()">
+                        <i class="bi bi-caret-right-fill"></i>
+                    </div>
                 </div>
+
+               
             </div>
 
         

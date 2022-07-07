@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php
+// Template Name: Quem Somos
+get_header();
+?>
 
 
     <main>
@@ -20,7 +23,7 @@
                 </div>
 
                 <div class="hist_right f-50">
-                    <img class="hist_main_img" src="assets/img/casa2.png" alt="">
+                    <img class="hist_main_img" src="<?= get_post_meta( get_the_ID(), 'img_quem_somos_page', true ) ?>" alt="">
                 </div>
             </div>
         </section>
@@ -54,30 +57,58 @@
         <section class="section_gallery container_full">
 
             <div class="board_gallery" style="max-width: 920px; margin: auto">
+
+                <?php
+                    $imgs_gall = get_post_meta( get_the_ID(), 'galeria_quemsomos_page', 1 );
+                    
+                    $imgs_array = [];
+                    $count_img = 0;
+
+                    foreach($imgs_gall as $img){
+                        $imgs_array[$count_img] = $img;
+                        $count_img++;
+                    }
+
+                    if(is_array($imgs_gall)):
+                ?>
+
+
                 <div class="gall-container">
                    
-                    <img class="frame_img" id="expandedImg" src="assets/img/gall1.jpeg" style="width:100%">
+                    <img class="frame_img" id="expandedImg" src="<?= $imgs_array[0] ?>" style="width:100%">
                     <div id="imgtext"></div>
                 </div>
                   
                   <!-- The four columns -->
                 <div class="gall-row">
+
+                    <?php
+                        foreach($imgs_gall as $img_gall):
+                    ?>
                     <div class="gall-column">
-                      <img src="assets/img/gall1.jpeg" alt="photo 1" style="" onclick="myFunction(this);">
+                      <img src="<?= $img_gall ?>" alt="" style="" onclick="myFunction(this);">
+                    </div>
+
+                    <?php endforeach ?>
+
+                    <!-- 
+                    <div class="gall-column">
+                      <img src="<?= get_template_directory_uri() ?>/assets/img/gall2.jpeg" alt="photo2" style="" onclick="myFunction(this);">
                     </div>
                     <div class="gall-column">
-                      <img src="assets/img/gall2.jpeg" alt="photo2" style="" onclick="myFunction(this);">
+                      <img src="<?= get_template_directory_uri() ?>/assets/img/gall3.jpeg" alt="photo 3" style="" onclick="myFunction(this);">
                     </div>
                     <div class="gall-column">
-                      <img src="assets/img/gall3.jpeg" alt="photo 3" style="" onclick="myFunction(this);">
+                      <img src="<?= get_template_directory_uri() ?>/assets/img/gall4.jpeg" alt="photo 4" style="" onclick="myFunction(this);">
                     </div>
                     <div class="gall-column">
-                      <img src="assets/img/gall4.jpeg" alt="photo 4" style="" onclick="myFunction(this);">
+                      <img src="<?= get_template_directory_uri() ?>/assets/img/gall5.jpeg" alt="photo 4" style="" onclick="myFunction(this);">
                     </div>
-                    <div class="gall-column">
-                      <img src="assets/img/gall5.jpeg" alt="photo 4" style="" onclick="myFunction(this);">
-                    </div>
+                     -->
+
                 </div>
+
+                <?php endif; ?>
             </div>
 
         </section>
@@ -87,7 +118,7 @@
             <div class="cards_quem_content container">
 
                 <article class="card_quem">
-                    <img src="assets/img/arrow-red.png" alt="">
+                    <img src="<?= get_template_directory_uri() ?>/assets/img/arrow-red.png" alt="">
                     <div class="card_quem_info">
                         <h3 class="title-default">Missão</h3>
                         <p class="desc-default">Melhorar, dia após dia, a vida das pessoas que passarem pelo nosso caminho por meio do amor e do acolhimento. Além de proporcionar o acesso a: esporte, educação, capacitação profissional e saúde.</p>
@@ -95,7 +126,7 @@
                 </article>
 
                 <article class="card_quem">
-                    <img src="assets/img/arrow-green.png" alt="">
+                    <img src="<?= get_template_directory_uri() ?>/assets/img/arrow-green.png" alt="">
                     <div class="card_quem_info">
                         <h3 class="title-default">Visão</h3>
                         <p class="desc-default">Fazer a diferença na vida de pessoas que carecem do nosso amor e cuidado.</p>
@@ -103,7 +134,7 @@
                 </article>
 
                 <article class="card_quem">
-                    <img src="assets/img/arrow-purple.png" alt="">
+                    <img src="<?= get_template_directory_uri() ?>/assets/img/arrow-purple.png" alt="">
                     <div class="card_quem_info">
                         <h3 class="title-default">Valores</h3>
                         <p class="desc-default">Ética; responsabilidade social, moral; dinamismo; transparência; relacionamento com respeito e amor ao próximo.</p>
@@ -116,4 +147,4 @@
 
     </main>
 
-    <?php include('footer.php') ?>
+    <?php get_footer() ?>
